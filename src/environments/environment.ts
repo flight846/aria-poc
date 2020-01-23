@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  gw_url: 'https://aria-poc-server.herokuapp.com/'
 };
 
 /*

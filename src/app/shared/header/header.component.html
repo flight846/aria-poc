@@ -1,0 +1,8 @@
+<div class="ui top fixed menu main container">
+  <div class="item">
+    <img src="/assets/images/logo.png">
+  </div>
+  <ng-container *ngFor="let link of links">
+    <a class="item" routerLink='{{ link.link }}'>{{ link.name }}</a>
+  </ng-container>
+</div>
