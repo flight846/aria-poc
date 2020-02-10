@@ -1,0 +1,21 @@
+<div class="results-wrapper" *ngIf="results">
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of headers">{{ col | uppercase }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of results">
+        <td *ngFor="let col of headers" data-label="Name">{{ item[col] }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th [attr.colspan]="headers.length">
+          <app-pagination></app-pagination>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

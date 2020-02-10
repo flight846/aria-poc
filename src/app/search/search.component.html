@@ -1,0 +1,7 @@
+<div class="container">
+  <p>search works!</p>
+  <app-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-spinner>
+  <ng-container *ngIf="!isLoading && results">
+    {{ results | json }}
+  </ng-container>
+</div>

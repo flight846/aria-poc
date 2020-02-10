@@ -1,4 +1,44 @@
-:host {
-  padding-bottom: 4em;
-  display: block;
+// :host {
+//   padding-bottom: 4em;
+//   display: block;
+// }
+
+.navbar {
+  padding: 50px 93px;
+  box-shadow: 0px 3px 6px #00000017;
+  & img {
+    width: 36px;
+    height: auto;
+  }
+}
+
+.navbar .btn-navbar { position: absolute; top: 0; right: 0; }
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+  color: #555;
+}
+
+.main-header {
+  .nav-link { position: relative; }
+  .badge {
+    &.navbar-badge {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      height: 12px;
+      background-color: #FF8181;
+      border-radius: 6px;
+      font-size: 8px;
+      padding: 1px 5px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+   .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
 }

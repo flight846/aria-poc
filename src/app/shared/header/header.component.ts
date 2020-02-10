@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   links = [
-    { link: '/features', name: 'Features' },
-    { link: '/testimonials', name: 'Testimonials' },
-    { link: '/sign-in', name: 'Sign-in' },
+    { link: '/', name: 'Home' },
+    { link: '/charges', name: 'Charges' },
+    { link: '/features', name: 'White Clean' },
+    { link: '/professional', name: 'Professional' },
+    { link: '/settings', name: 'Bookmark & History' },
   ];
 
   constructor() { }
