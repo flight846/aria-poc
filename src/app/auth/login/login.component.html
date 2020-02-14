@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="login-wrapper">
+  <img src="../../assets/images/login.png" alt="" class="img-100vw img-bg">
+  <div class="login-form">
+    <div class="login-form-welcome">
+      <h1>Welcome to Law Kaki</h1>
+      <p>Join our community that have more than 10000 subscribers and learn new things everyday</p>
+    </div>
+    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-label-group">
+        <input
+          type="email"
+          class="form-control"
+          id="fEmail"
+          aria-describedby="emailHelp"
+          formControlName="email"
+          placeholder="EMAIL*"
+          [ngClass]="{'is-invalid': (form.get('email').touched ||
+                                            form.get('email').dirty) &&
+                                            !form.get('email').valid }"
+        >
+        <label for="fEmail">EMAIL*</label>
+        <div class="invalid-feedback" *ngIf="form.get('email').errors?.required">Email is required.
+          <span *ngIf="!form.get('email').errors?.valid">Please enter a valid email address</span>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input
+          type="password"
+          class="form-control"
+          id="fPassword"
+          formControlName="password"
+          placeholder="PASSWORD*"
+          [ngClass]="{'is-invalid': (form.get('password').touched ||
+                                            form.get('password').dirty) &&
+                                            !form.get('password').valid }"
+        >
+        <label for="fPassword">PASSWORD*</label>
+        <div class="invalid-feedback" *ngIf="form.get('password').errors?.required">Password is required </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+    </form>
+    {{ form.value | json }} <br>
+    Valid: {{ form.valid }}
+  </div>
+</div>
