@@ -37,9 +37,9 @@
         <label for="fPassword">PASSWORD*</label>
         <div class="invalid-feedback" *ngIf="form.get('password').errors?.required">Password is required </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit
+        <app-spinner *ngIf="isLoading"></app-spinner>
+      </button>
     </form>
-    {{ form.value | json }} <br>
-    Valid: {{ form.valid }}
   </div>
 </div>

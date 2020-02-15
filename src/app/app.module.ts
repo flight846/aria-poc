@@ -16,6 +16,14 @@ import { SearchInputComponent } from './shared/forms/search-input/search-input.c
 import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+    tokenGetter: () => localStorage.getItem('token'),
+    whitelistedDomains: ['localhost:4200']
+  }
+};
 
 @NgModule({
   declarations: [
@@ -37,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot(JWT_Module_Options)
   ],
   providers: [],
   bootstrap: [AppComponent]

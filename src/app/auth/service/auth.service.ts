@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { map } from 'rxjs/operators';
+import { Observable, of as observableOf } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthenticated: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) { }
 
   login(formData) {
-    this.http.post(environment.gw_url + 'auth/login', formData)
-      .subscribe(data => {
-        console.log('Login status: ', data);
-      });
+    return this.http.post(environment.gw_url + 'auth/login', formData)
+      .pipe(map(token => {
+        localStorage.setItem('token', token['access_token']);
+      }));
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    if (token === null) {
+      return observableOf(false);
+    }
+    return observableOf(true);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }

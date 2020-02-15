@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/service/auth-guard.guard';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 
