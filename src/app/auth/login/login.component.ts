@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   backgroundUrl = '../../assets/images/login.png';
   isLoading = false;
+  isAuthenticated = false;
   form: FormGroup;
   errors: any[] = [];
 
@@ -39,7 +40,6 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe(
           data => {
-            console.log("Login data: ", data);
             this.router.navigateByUrl('/search');
           },
           error => {
