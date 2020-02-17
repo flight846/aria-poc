@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav my-0 mr-md-auto">
         <li *ngFor="let item of links">
-          <a class="nav-item nav-link" href="{{ item.link }}">{{ item.name }} <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" [routerLink]="[item.link]" routerLinkActive="active">{{ item.name }} <span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <app-search-input></app-search-input>

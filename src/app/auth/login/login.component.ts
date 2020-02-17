@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe(
           data => {
-            this.router.navigateByUrl('/search');
+            this.router.navigateByUrl('/charges');
           },
           error => {
+            console.error(error.error.message);
             this.errors.push(error.error.message);
             this.isLoading = false;
           }

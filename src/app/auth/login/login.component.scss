@@ -24,8 +24,11 @@
       box-shadow: 0px 12px 40px #00000014;
       border: 1px solid transparent;
       background-color: transparent;
+    }
 
-      & :focus { background-color: yellow; }
+    .form-control:focus {
+      border-left: 6px solid #707070;
+      padding-left: 22px;
     }
 
     h1 {
@@ -38,6 +41,18 @@
       letter-spacing: 0;
     }
     p { width: 60%; font-size: 20px; margin-top: 42px; margin-bottom: 64px; }
+
+    .btn-wrapper {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-link {
+      font-size: 20px;
+      line-height: 27px;
+      color: #707070;
+      letter-spacing: 1px;
+    }
   }
 
 }
