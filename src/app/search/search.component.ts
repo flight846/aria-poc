@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SearchService } from './search.service';
 import { Case } from '../Case.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -9,23 +10,16 @@ import { Case } from '../Case.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  form: FormGroup;
   results: Case[];
   headers = [];
   isLoading = true;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.isLoading);
-    this.searchService.getCases()
-      .subscribe(data => {
-        this.isLoading = true;
-        this.results = data;
-        Object.keys(data[0]).forEach(key => {
-          this.headers.push(key);
-        });
-        this.isLoading = false;
-      });
+    this.form = this.fb.group({
+      search: ['', [Validators.required]]
+    });
   }
-
 }

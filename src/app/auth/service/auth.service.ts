@@ -4,15 +4,19 @@ import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
+  isLoginSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
+
+  getAuthorizationToken() {
+    return localStorage.getItem('token');
+  }
 
   login(formData) {
     return this.http.post(environment.gw_url + "auth/login", formData).pipe(

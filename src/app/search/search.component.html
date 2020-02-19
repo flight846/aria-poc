@@ -1,7 +1,17 @@
 <div class="container">
-  <p>search works!</p>
-  <app-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-spinner>
-  <ng-container *ngIf="!isLoading && results">
-    {{ results | json }}
-  </ng-container>
+  <div class="search-wrapper">
+    <div class="form-group">
+      <form [formGroup]="form" novalidate>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" formControlName="search" aria-label="Amount (to the nearest dollar)">
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
