@@ -4,11 +4,20 @@
       <form [formGroup]="form" novalidate>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">$</span>
+            <button>
+              <svg class="bi bi-filter text-white" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7.5 13a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h8a.5.5 0 010 1H6a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h12a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
           </div>
-          <input type="text" class="form-control" formControlName="search" aria-label="Amount (to the nearest dollar)">
+          <input type="text" class="form-control" formControlName="search" aria-label="search" placeholder="Type something">
           <div class="input-group-append">
-            <span class="input-group-text">.00</span>
+            <button>
+              <svg class="bi bi-search text-white" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
+                <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </form>

@@ -1,1 +1,34 @@
-.search-wrapper { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; width: 100%; }
+.search-wrapper {
+  display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; width: 100%;
+  .form-control {
+    height: 62px;
+    box-shadow: -5px 0px 30px #00000014;
+    border: none;
+    width: 741px;
+  }
+  .input-group-prepend,
+  .input-group-append {
+    & > button {
+      border: none;
+      background-color: #707070;
+      &:focus { outline: none; box-shadow: none; }
+    }
+  }
+  .input-group-prepend > button {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    padding-left: 20px;
+    width: 70px;
+    height: 60px;
+  }
+  .input-group-append>button {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-top: -10px;
+    margin-left: -10px;
+    box-shadow: 0px 0px 10px #0000004D;
+    z-index: 10;
+    // padding-left: 20px;
+  }
+}

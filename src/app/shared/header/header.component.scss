@@ -11,13 +11,16 @@
     height: auto;
   }
 }
+.navbar-light .navbar-nav .nav-link {
+  color: #222222;
+}
 
 .navbar .btn-navbar { position: absolute; top: 0; right: 0; }
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-  color: #555;
+  color: #0D29AA;
 }
 
 .main-header {
