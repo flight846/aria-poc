@@ -6,6 +6,8 @@
 .navbar {
   padding: 50px 93px;
   box-shadow: 0px 3px 6px #00000017;
+  position: fixed;
+  width: 100%;
   & img {
     width: 36px;
     height: auto;
