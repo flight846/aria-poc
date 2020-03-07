@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/charges');
           },
           error => {
-            console.error(error.error.message);
-            this.errors.push(error.error.message);
+            console.error(error);
+            this.errors.push(error);
             this.isLoading = false;
           }
         );

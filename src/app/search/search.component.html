@@ -1,8 +1,7 @@
 <div class="container">
   <div class="search-wrapper">
     <div class="form-group">
-      <form [formGroup]="form" novalidate>
-        <div class="input-group mb-3">
+      <div class="input-group mb-3">
           <div class="input-group-prepend">
             <button>
               <svg class="bi bi-filter text-white" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +9,7 @@
               </svg>
             </button>
           </div>
-          <input type="text" class="form-control" formControlName="search" aria-label="search" placeholder="Type something">
+          <input type="text" class="form-control" #searchBox (input)="populateCaseOptions(searchBox.value)" aria-label="search" placeholder="Type something">
           <div class="input-group-append">
             <button type="submit">
               <svg class="bi bi-search text-white" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +19,11 @@
             </button>
           </div>
         </div>
-      </form>
     </div>
+    <ul class="search-result">
+      <li *ngFor="let case of caseOptions$ | async" >
+        {{ case }}
+      </li>
+    </ul>
   </div>
 </div>

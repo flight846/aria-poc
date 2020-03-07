@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './shared/services/http-inteceptor';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -48,7 +49,13 @@ const JWT_Module_Options: JwtModuleOptions = {
     BrowserAnimationsModule,
     JwtModule.forRoot(JWT_Module_Options)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
