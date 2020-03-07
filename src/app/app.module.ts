@@ -14,7 +14,7 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { SearchInputComponent } from './shared/forms/search-input/search-input.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './shared/services/http-inteceptor';
@@ -43,6 +43,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     NgSelectModule,
     HttpClientModule,
     ReactiveFormsModule,

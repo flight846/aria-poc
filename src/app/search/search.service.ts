@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, map, first, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: "root"
 })
 export class SearchService {
-  baseUrl = environment.gw_url + "/cases";
+  baseUrl = environment.gw_url + "api/cases";
   queryString = "?q=";
   count = 10;
   limit = "?_limit=" + this.count;
@@ -20,17 +20,13 @@ export class SearchService {
     return this.http.get(this.baseUrl + this.limit);
   }
 
-  getCaseTerms(term: string): Observable<any[]> {
+  getCaseTerms(term: string): Observable<string | void | any[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
-      return of([]);
+      return of(null);
     }
-    return this.http.get<any[]>(`${this.baseUrl}?q=${term}`).pipe(
-      tap(x =>
-        x.length
-          ? console.log(`found cases matching "${term}"`)
-          : console.log(`no cases matching "${term}"`)
-      ),
+    return this.http.get<any[]>(`${this.baseUrl}?caseId=${term}`).pipe(
+      map(x => x.length ? x[0].caseId : null),
       catchError(this.handleError<any[]>("cases", []))
     );
   }
