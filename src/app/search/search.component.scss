@@ -39,6 +39,11 @@
     padding: 12px;
     margin: 0 70px;
     & > li { cursor: pointer; }
+    &:hover {
+      background-color: #607D8B;
+      color: #fff;
+      border-radius: 4px;
+    }
   }
 
   .search-pills {
@@ -52,7 +57,7 @@
       padding: 10px 20px;
       margin-bottom: 20px;
       width: 200px;
-      &:nth-child(3n + 1) {
+      &:nth-child(4n + 1) {
         margin-left: 0!important;
       }
       svg { cursor: pointer; }

@@ -21,13 +21,26 @@ export class SearchService {
   }
 
   getCaseTerms(term: string): Observable<string | void | any[]> {
+    console.log("Get case terms");
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of(null);
     }
     return this.http.get<any[]>(`${this.baseUrl}?caseId=${term}`).pipe(
-      map(x => x.length ? x[0].caseId : null),
+      map(x => (x.length ? x[0].caseId : null)),
       catchError(this.handleError<any[]>("cases", []))
+    );
+  }
+
+  getCodeTerms(term: string): Observable<string | void | any[]> {
+    console.log('Get code terms')
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of(null);
+    }
+    return this.http.get<any[]>(`${this.baseUrl}?charge.codes=${term}`).pipe(
+      map(x => (x.length ? x[0].charge.codes[0] : null)),
+      catchError(this.handleError<any[]>("code", []))
     );
   }
 

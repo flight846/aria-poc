@@ -8,7 +8,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // Get the auth token from the service.
-    console.log("INTERCEPTOR");
     // We retrieve the token, if any
     const token = this.auth.getAuthorizationToken();
     let newHeaders = req.headers;

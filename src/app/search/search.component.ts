@@ -15,27 +15,28 @@ export class SearchComponent implements OnInit {
   results: Case[];
   terms = [];
   searchBox: string;
-  caseOptions$: Observable<string | void | any[]> | null = null;
-  private caseTerm = new Subject<string>();
+  searchBy = 'code';
+  searchOptions$: Observable<string | void | any[]> | null = null;
+  private searchTerm = new Subject<string>();
   headers = [];
   isLoading = true;
 
   constructor(private searchService: SearchService, private fb: FormBuilder) {}
 
-  populateCaseOptions(term: string): void {
-    this.caseTerm.next(term);
+  populatesearchOptions(term: string): void {
+    this.searchTerm.next(term);
   }
 
   addTerm(term: string) {
     this.searchBox = '';
     if (this.terms.indexOf(term) === -1) {
-      if (this.terms.length < 6) {
+      if (this.terms.length < 8) {
         this.terms.push(term);
         console.log("Added: ", term);
         console.log("Length: ", this.terms.length);
       }
     }
-    this.caseTerm.next('');
+    this.searchTerm.next('');
   }
 
   deleteTerm(term: string) {
@@ -44,13 +45,21 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.caseOptions$ = this.caseTerm.pipe(
+    this.searchOptions$ = this.searchTerm.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
       // ignore new term if same as previous term
       distinctUntilChanged(),
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.searchService.getCaseTerms(term))
+      switchMap(
+        (term: string) => {
+          if (this.searchBy === 'caseId') {
+            return this.searchService.getCaseTerms(term);
+          } else if (this.searchBy === "code") {
+            return this.searchService.getCodeTerms(term);
+          }
+        }
+      )
     );
 
     this.form = this.fb.group({
