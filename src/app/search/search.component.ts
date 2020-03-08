@@ -29,16 +29,18 @@ export class SearchComponent implements OnInit {
   addTerm(term: string) {
     this.searchBox = '';
     if (this.terms.indexOf(term) === -1) {
-      if (this.terms.length < 7) {
+      if (this.terms.length < 6) {
         this.terms.push(term);
         console.log("Added: ", term);
+        console.log("Length: ", this.terms.length);
       }
     }
     this.caseTerm.next('');
   }
 
   deleteTerm(term: string) {
-    console.log(term);
+    this.terms = this.terms.filter(t => t !== term);
+    console.log(this.terms);
   }
 
   ngOnInit() {

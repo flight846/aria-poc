@@ -42,14 +42,21 @@
   }
 
   .search-pills {
-    display: inline-block; margin-top: 37px;
+    display: flex; margin-top: 37px; flex-wrap: wrap;
     .pills {
+      display: flex;
+      justify-content: space-between;
       background: #FFFFFF 0% 0% no-repeat padding-box;
       box-shadow: 0px 2px 5px #00000019;
       border-radius: 30px;
       padding: 10px 20px;
-      & svg { cursor: pointer; }
-      & + .pills { margin-left: 35px; }
+      margin-bottom: 20px;
+      width: 200px;
+      &:nth-child(3n + 1) {
+        margin-left: 0!important;
+      }
+      svg { cursor: pointer; }
+      + .pills { margin-left: 35px; }
     }
   }
 }
