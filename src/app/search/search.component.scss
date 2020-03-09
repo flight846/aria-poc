@@ -57,11 +57,24 @@
       padding: 10px 20px;
       margin-bottom: 20px;
       width: 200px;
-      &:nth-child(4n + 1) {
-        margin-left: 0!important;
-      }
       svg { cursor: pointer; }
       + .pills { margin-left: 35px; }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .pills {
+      &:nth-child(3n + 1) {
+        margin-left: 0 !important;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .pills {
+      &:nth-child(4n + 1) {
+        margin-left: 0 !important;
+      }
     }
   }
 }

@@ -16,8 +16,10 @@ export class SearchService {
 
   constructor(private http: HttpClient) {}
 
-  getCases(): Observable<any> {
-    return this.http.get(this.baseUrl + this.limit);
+  getCases(term: string): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.baseUrl}?caseId=${term}`)
+      .pipe(catchError(this.handleError<any[]>("getHeroes", [])));
   }
 
   getCaseTerms(term: string): Observable<string | void | any[]> {
@@ -33,7 +35,7 @@ export class SearchService {
   }
 
   getCodeTerms(term: string): Observable<string | void | any[]> {
-    console.log('Get code terms')
+    console.log("Get code terms");
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of(null);
@@ -42,6 +44,11 @@ export class SearchService {
       map(x => (x.length ? x[0].charge.codes[0] : null)),
       catchError(this.handleError<any[]>("code", []))
     );
+  }
+
+  getCasesByCode(code: string): Observable<any[]> {
+    console.log("Get case by code");
+    return this.http.get<any[]>(`${this.baseUrl}?charge.codes=${code}`);
   }
 
   private handleError<T>(operation = "operation", result?: T) {
