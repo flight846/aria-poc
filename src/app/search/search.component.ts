@@ -74,6 +74,7 @@ export class SearchComponent implements OnInit {
               cases => this.results = this.results.concat(cases)
             );
       });
+      this.terms = [];
     }
   }
 }

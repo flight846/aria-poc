@@ -7,12 +7,12 @@ import { Case } from 'src/app/Case.model';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  @Input() results: Case[];
+  @Input() results: any[];
   @Input() headers = [];
 
   constructor() { }
 
   ngOnInit() {
+    console.log('Headers:', this.headers);
   }
-
 }

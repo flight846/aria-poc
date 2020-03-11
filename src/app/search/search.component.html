@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="search-wrapper">
+  <div class="search-wrapper" [ngClass]="(results.length)?'hasTable':''">
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-prepend" ngbDropdown>
@@ -46,6 +46,8 @@
         </li>
       </ul>
     </div>
-    Results: {{ results | json }}
+    <ng-container *ngIf="results.length">
+      <app-table [results]="results" [headers]="[results[0].codes, 'court', 'sentence', 'year']"></app-table>
+    </ng-container>
   </div>
 </div>
